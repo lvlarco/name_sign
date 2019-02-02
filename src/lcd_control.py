@@ -2,6 +2,10 @@
 # Example using a character LCD connected to a Raspberry Pi
 import time
 import Adafruit_CharLCD as LCD
+import RPi.GPIO as GPIO
+
+GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BCM)
 
 # Raspberry Pi pin setup
 lcd_rs = 25
