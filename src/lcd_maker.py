@@ -12,7 +12,7 @@ number = 0
 while(True):
 # Increment the number and then print it to the LCD number = number + 1
     lcd.clear()
-    lcd.write_string(“Count: “+ str(number))
+    lcd.write_string("Count: "+ str(number))
     time.sleep(1)
 
 lcd.close()
