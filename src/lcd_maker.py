@@ -14,7 +14,9 @@ number = 0
 while(True):
 # Increment the number and then print it to the LCD number = number + 1
     lcd.clear()
-    lcd.write_string("Marco's office, \nAvailable? ")
+    lcd.write_string("Marco's office")
+    lcd.cursor_pos = (2, 0)
+    lcd.write_string("Available? ")
 
 lcd.close()
 GPIO.cleanup()
