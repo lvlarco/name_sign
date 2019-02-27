@@ -1,6 +1,7 @@
 import RPi.GPIO as GPIO
 import time
 from RPLCD.gpio import CharLCD
+GPIO.setwarnings(False)
 
 # Configure the LCD
 lcd = CharLCD(pin_rs = 19, pin_rw = None, pin_e = 16, pins_data = [21,18,23,24], numbering_mode = GPIO.BOARD)
