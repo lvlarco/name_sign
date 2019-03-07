@@ -86,7 +86,10 @@ def fetch_weather(x):
     else:
         print(" City Not Found ")
 
-def start_cursor(message, lcd_length)
+def center_cursor(message, lcd_length):
+    '''Finds the cursor position to center message in LCD screen'''
     msg_length = len(message)
-    cursor_pos = int(lcd_length - msg_length / 2)
+    print'len'
+    print msg_length
+    cursor_pos = int((lcd_length - msg_length) / 2)
     return cursor_pos

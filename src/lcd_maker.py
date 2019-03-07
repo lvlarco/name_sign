@@ -1,16 +1,18 @@
-import RPi.GPIO as GPIO
-import time
-from RPLCD.gpio import CharLCD
+# import RPi.GPIO as GPIO
+# import time
+# from RPLCD.gpio import CharLCD
 import requests, json
 from pprint import pprint
 import harvesine as hv
 import fetch_weather as fw
 
-GPIO.setwarnings(False)
+# GPIO.setwarnings(False)
 
 # Configure the LCD
-lcd = CharLCD(pin_rs = 19, pin_rw = None, pin_e = 16, pins_data = [21,18,23,24],
-              numbering_mode = GPIO.BOARD, cols=16, rows=2, dotsize=8)
+cols = 16
+rows = 2
+# lcd = CharLCD(pin_rs = 19, pin_rw = None, pin_e = 16, pins_data = [21,18,23,24],
+#               numbering_mode = GPIO.BOARD, cols=cols, rows=rows, dotsize=8)
 #lcd = CharLCD(pin_rs = 10, pin_rw = None, pin_e = 23, pins_data = [9,24,11,8], numbering_mode = GPIO.BCM)
 
 api_key = "19c2e8d2c714c0c7423d8126fe94224f"
@@ -26,16 +28,25 @@ wait_time = 3
 temperature = int(round(fw.fetch_weather(x)))
 day_status = hv.day_status(temperature)
 
+message1 = "This is Marco's"
+pos1 = hv.center_cursor(message1, cols)
+message2 = str("It is so " + day_status)
+pos2 = hv.center_cursor(message2, cols)
+message3 = "We are at\n"
+pos3 = hv.center_cursor(message3, cols)
+
 while(True):
     lcd.clear()
-   # lcd.cursor_pos = (0,5)
-    lcd.write_string("This is Marco's\n room")
+    lcd.cursor_pos = (0, pos1)
+    lcd.write_string(message1 + '\nroom')
     time.sleep(wait_time)
     lcd.clear()
-    lcd.write_string("It is so " + day_status + "\r\nin " + city_name.capitalize() + " today")
+    lcd.cursor_post = (0, pos2)
+    lcd.write_string("It is so " + day_status + "\nin " + city_name.capitalize() + " today")
     time.sleep(wait_time)
     lcd.clear()
-    lcd.write_string('We are at\r\n' + str(temperature) + ' degrees F')
+    lcd.cursor_post = (0, pos3)
+    lcd.write_string(message3 + str(temperature) + ' degrees F')
     time.sleep(wait_time)
 
 lcd.close()
