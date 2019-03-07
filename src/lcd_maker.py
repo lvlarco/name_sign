@@ -22,19 +22,21 @@ complete_url = base_url + city_name + "&units=" + units + "&appid=" + api_key
 response = requests.get(complete_url)
 x = response.json()
 
-temperature = fw.fetch_weather(x)
+wait_time = 3
+temperature = int(round(fw.fetch_weather(x)))
 day_status = hv.day_status(temperature)
 
 while(True):
     lcd.clear()
-    lcd.write_string("Marco Campos'\r\nOffice")
-    time.sleep(1)
+   # lcd.cursor_pos = (0,5)
+    lcd.write_string("This is Marco's\n room")
+    time.sleep(wait_time)
     lcd.clear()
-    lcd.write_string("Skype Status: ")
-    time.sleep(1)
+    lcd.write_string("It is so " + day_status + "\r\nin " + city_name.capitalize() + " today")
+    time.sleep(wait_time)
     lcd.clear()
-    lcd.write_string('It is ' + temperature + 'F\r\nSuch'+ day_status + 'day')
-    time.sleep(1)
+    lcd.write_string('We are at\r\n' + str(temperature) + ' degrees F')
+    time.sleep(wait_time)
 
 lcd.close()
 GPIO.cleanup()
