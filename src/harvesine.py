@@ -16,7 +16,6 @@ def haversine(lon1, lat1, lon2, lat2):
 
     return distance
 
-
 def find_closest(lon1, lat1, stations_list):
     smallest_dist = 10000
     closest_station = 'None'
@@ -29,3 +28,60 @@ def find_closest(lon1, lat1, stations_list):
             # print smallest_dist
             closest_station = station['weather_stn_id']
     return closest_station
+
+def day_status(temperature):
+    if temperature <= 20:
+        status = "frigid"
+    elif 20 < temperature < 40:
+        status = "cold"
+    elif 40 < temperature < 80:
+        status = "nice"
+    else:
+        status = "too hot"
+
+    return status
+
+
+    return
+
+
+def fetch_weather(x):
+    # Now x contains list of nested dictionaries
+    if x["cod"] != "404":
+
+        # store the value of "main"
+        y = x["main"]
+
+        # store the value corresponding
+        # to the "temp" key of y
+        current_temperature = y["temp"]
+
+        # store the value corresponding
+        # to the "pressure" key of y
+        current_pressure = y["pressure"]
+
+        # store the value corresponding
+        # to the "humidity" key of y
+        current_humidiy = y["humidity"]
+
+        # store the value of "weather"
+        # key in variable z
+        z = x["weather"]
+
+        # store the value corresponding
+        # to the "description" key at
+        # the 0th index of z
+        weather_description = z[0]["description"]
+
+        # print following values
+        print(" Temperature (in kelvin unit) = " +
+              str(current_temperature) +
+              "\n atmospheric pressure (in hPa unit) = " +
+              str(current_pressure) +
+              "\n humidity (in percentage) = " +
+              str(current_humidiy) +
+              "\n description = " +
+              str(weather_description))
+
+    else:
+        print(" City Not Found ")
