@@ -1,19 +1,19 @@
-# import RPi.GPIO as GPIO
-# import time
-# from RPLCD.gpio import CharLCD
+import RPi.GPIO as GPIO
+import time
+from RPLCD.gpio import CharLCD
 import requests, json
 from pprint import pprint
 import harvesine as hv
 import fetch_weather as fw
 
-# GPIO.setwarnings(False)
+GPIO.setwarnings(False)
 
 # Configure the LCD
 cols = 16
 rows = 2
-# lcd = CharLCD(pin_rs = 19, pin_rw = None, pin_e = 16, pins_data = [21,18,23,24],
-#               numbering_mode = GPIO.BOARD, cols=cols, rows=rows, dotsize=8)
-#lcd = CharLCD(pin_rs = 10, pin_rw = None, pin_e = 23, pins_data = [9,24,11,8], numbering_mode = GPIO.BCM)
+lcd = CharLCD(pin_rs = 19, pin_rw = None, pin_e = 16, pins_data = [21,18,23,24],
+              numbering_mode = GPIO.BOARD, cols=cols, rows=rows, dotsize=8)
+lcd = CharLCD(pin_rs = 10, pin_rw = None, pin_e = 23, pins_data = [9,24,11,8], numbering_mode = GPIO.BCM)
 
 api_key = "19c2e8d2c714c0c7423d8126fe94224f"
 base_url = "https://api.openweathermap.org/data/2.5/weather?q="
