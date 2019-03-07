@@ -1,6 +1,5 @@
 from math import radians, cos, sin, asin, sqrt
 
-
 def haversine(lon1, lat1, lon2, lat2):
     lon1 = radians(lon1)
     lat1 = radians(lat1)
@@ -10,7 +9,6 @@ def haversine(lon1, lat1, lon2, lat2):
     dlon = lon2 - lon1
     dlat = lat2 - lat1
     r_earth = 6371  # km
-
     a = sin(dlat / 2) ** 2 + cos(lat1) * cos(lat2) * sin(dlon / 2) ** 2
     distance = 2 * asin(sqrt(a)) * r_earth
 
@@ -37,13 +35,9 @@ def day_status(temperature):
     elif 40 < temperature < 80:
         status = "nice"
     else:
-        status = "too hot"
+        status = "hot"
 
     return status
-
-
-    return
-
 
 def fetch_weather(x):
     # Now x contains list of nested dictionaries
@@ -52,37 +46,26 @@ def fetch_weather(x):
         # store the value of "main"
         y = x["main"]
 
-        # store the value corresponding
-        # to the "temp" key of y
         current_temperature = y["temp"]
-
-        # store the value corresponding
-        # to the "pressure" key of y
         current_pressure = y["pressure"]
-
-        # store the value corresponding
-        # to the "humidity" key of y
         current_humidiy = y["humidity"]
 
         # store the value of "weather"
         # key in variable z
         z = x["weather"]
-
         # store the value corresponding
         # to the "description" key at
         # the 0th index of z
         weather_description = z[0]["description"]
 
-        # print following values
-        print(" Temperature (in kelvin unit) = " +
-              str(current_temperature) +
-              "\n atmospheric pressure (in hPa unit) = " +
-              str(current_pressure) +
-              "\n humidity (in percentage) = " +
-              str(current_humidiy) +
-              "\n description = " +
-              str(weather_description))
-
+        # print(" Temperature (in kelvin unit) = " +
+        #       str(current_temperature) +
+        #       "\n atmospheric pressure (in hPa unit) = " +
+        #       str(current_pressure) +
+        #       "\n humidity (in percentage) = " +
+        #       str(current_humidiy) +
+        #       "\n description = " +
+        #       str(weather_description))
     else:
         print(" City Not Found ")
 
