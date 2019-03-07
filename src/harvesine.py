@@ -85,3 +85,8 @@ def fetch_weather(x):
 
     else:
         print(" City Not Found ")
+
+def start_cursor(message, lcd_length)
+    msg_length = len(message)
+    cursor_pos = int(lcd_length - msg_length / 2)
+    return cursor_pos
