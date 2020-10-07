@@ -16,6 +16,6 @@ closest_station = hv.find_closest(my_long, my_lat, stations_list)
 closest_station = 255541
 
 station_url = 'https://apex.oracle.com/pls/apex/raspberrypi/weatherstation/getlatestmeasurements/' + str(closest_station)
-print station_url
+print (station_url)
 station_weather = get(station_url).json()['items']
 pprint(station_weather)

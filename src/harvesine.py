@@ -72,7 +72,7 @@ def fetch_weather(x):
 def center_cursor(message, lcd_length):
     '''Finds the cursor position to center message in LCD screen'''
     msg_length = len(message)
-    print'len'
-    print msg_length
+    print('len')
+    print(msg_length)
     cursor_pos = int((lcd_length - msg_length) / 2)
     return cursor_pos

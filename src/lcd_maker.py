@@ -13,7 +13,7 @@ cols = 16
 rows = 2
 gpio_mode = "BOARD"
 
-if gpio_mode = "BOARD":
+if gpio_mode == "BOARD":
     lcd = CharLCD(pin_rs = 19, pin_rw = None, pin_e = 16, pins_data = [21,18,23,24],
                   numbering_mode = GPIO.BOARD, cols=cols, rows=rows, dotsize=8)
 else:
@@ -30,9 +30,11 @@ response = requests.get(complete_url)
 x = response.json()
 
 wait_time = 3
-temperature = int(round(fw.fetch_weather(x)))
-day_status = hv.day_status(temperature)
-if units = "imperial":
+# temperature = int(round(fw.fetch_weather(x)))
+# day_status = hv.day_status(temperature)
+temperature = "56"
+day_status = "hot"
+if units == "imperial":
     temp_units = " degrees F"
 else:
     temp_units = " degrees"
@@ -55,7 +57,7 @@ message13 = "{0}{1}".format(str(temperature), temp_units)
 pos03 = hv.center_cursor(message03, cols)
 pos13 = hv.center_cursor(message13, cols)
 
-while(True):
+while True:
     lcd.clear()
     lcd.cursor_pos = (0, pos01)
     lcd.write_string(message01)
