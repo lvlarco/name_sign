@@ -40,8 +40,8 @@ else:
     temp_units = " degrees"
 
 #first screen
-message01 = "This is Marco's"
-message11 = "room" 
+message01 = "Weather forecast"
+message11 = ""
 pos01 = hv.center_cursor(message01, cols)
 pos11 = hv.center_cursor(message11, cols)
 
